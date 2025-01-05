@@ -1,0 +1,33 @@
+Hum direct function main.
+ me bana ke use kar sakte hain. Function ka naam hamesha uppercase se start hona chahiye, jaise:  
+
+  function Random() {
+    return (
+      <div>
+        <h1>Hello, this is react playlist</h1>
+      </div>
+    );
+  }
+  
+  Isse hum `.render()` ke through call karte hain:  
+  
+  
+  createRoot(document.getElementById('root')).render(<Random />);
+  
+
+- Hum React ka custom element bhi bana sakte hain using `React.createElement`. Example:  
+  
+  const reactElement = React.createElement(
+    'a', 
+    { href: 'https://google.com', target: '_blank' }, 
+    'Click ME Please !'
+  );
+
+Isse `.render()` me directly use karte hain:  
+createRoot(document.getElementById('root')).render(reactElement);
+  
+
+StrictMode optional hai, isse hata bhi sakte hain.
+  createRoot(document.getElementById('root')).render(<Random />);
+
+StrictMode debugging aur warnings ke liye hota hai, development ke time useful hai lekin mandatory nahi.

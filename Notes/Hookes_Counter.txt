@@ -1,0 +1,29 @@
+1. React me Value Update Karna  
+   - React ek method provide karta hai jisse value ko update karna simple hota hai aur website ke different parts me use kiya ja sakta hai.  
+
+2. Method ka Naam  
+   - Is method ko `useState` kehte hain.  
+
+3. `useState` Import Karna  
+   - `useState` ko import karte hain:  
+     javascript
+     import { useState } from 'react';
+     
+
+4. Variable aur Function Declare Karna  
+   - Value assign karne ka tarika:  
+     javascript
+     let [counter, setCounter] = useState(15);
+     
+     - Pehla: Variable hota hai (e.g., `counter`).  
+     - Dusra: Function hota hai jo value update karta hai (e.g., `setCounter`).  
+
+5. Function ke Andar `useState` ka Example  
+   - `useState` ko function me aise use karte hain:  
+     javascript
+     const removeValue = () => {
+       console.log("clicked", counter);
+       counter--;
+       setCounter(counter);
+     };
+       

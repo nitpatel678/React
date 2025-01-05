@@ -1,0 +1,87 @@
+
+1. React Component me Props:
+   - Jab hame ek component se dusre component me values pass karni hoti hain, tab ham props ka use karte hain.
+   - Lekin agar ek component ke andar multiple nested components hain, to props ko baar-baar pass karna padta hai, jo ki efficient way nahi hai. Isse code complex ho jata hai aur unnecessary data passing hoti hai.
+
+
+2. Why Use Context?
+   - Isi problem ko solve karne ke liye ham Context ka use karte hain. 
+   - Context ki madad se, ham ek baar data pass karte hain aur woh data sabhi components mein accessible hota hai bina baar-baar pass kiye. 
+
+
+3. Setting up Context:
+
+   - Sabse pehle, src folder ke andar ek folder context banate hain.
+   - Us folder me ek js file banate hain jisme ham context ko define karenge.
+
+   For example:
+   javascript
+   const UserContext = React.createContext();
+   
+
+   Explanation:
+   - `React.createContext()`: Yeh React ka built-in method hai jo ek context create karta hai. Is context ka kaam hota hai data ko share karna across multiple components.
+
+
+4. Providing Context with a Provider:
+   - Context ko Provider ke through pass kiya jata hai. Provider ek wrapper hota hai jisme ham components wrap karte hain jinko global access chahiye hota hai is context ka.
+
+   Example:
+   javascript
+   const UserContextProvider = ({children}) => {
+     const [user, setUser] = React.useState(null);
+     return (
+         <UserContext.Provider value={{user, setUser}}>
+             {children}
+         </UserContext.Provider>
+     );
+   }
+   
+
+   Explanation:
+   - `useState(null)`: Yeh state hook hai, jo initially user ko null set karta hai. Jab bhi `setUser` function ko call karenge, user data update ho jayega.
+   - `<UserContext.Provider>`: Yeh component sabhi child components ko context ke andar pass karne ka kaam karta hai. 
+   - `value={{user, setUser}}`: Ismein ham context ki value define karte hain jo user aur setUser hota hai. Isse children components ko user aur setUser ki value mil jayegi.
+
+
+5. Using the Context in Components:
+
+   - Hamne 2 components banaye hain: Profile aur Login, jisme ham context ka use karenge.
+   
+   Example: Login Component
+   javascript
+   import UserContext from '../context/UserContext';
+   const { setUser } = useContext(UserContext); 
+   
+
+   Explanation:
+   - `useContext(UserContext)`: Yeh hook use karke ham UserContext ko access karte hain. Ab ham user ki state ko `setUser` function ke through update kar sakte hain.
+   - Jab `setUser` ko call karenge, user ka data context ke through update hoga, aur woh update sabhi components me reflect hoga jo UserContext ka use kar rahe hain.
+
+
+6. Wrapping Components with Context Provider in App:
+
+   - Ab ham apne components ko `UserContextProvider` ke andar wrap karte hain jisse ki unhe UserContext ka global access milega.
+
+   Example in App.jsx:
+   javascript
+   <UserContextProvider>
+      <Login />
+      <Profile />
+   </UserContextProvider>
+   
+
+   Explanation:
+   - Is code me hamne Login aur Profile components ko `<UserContextProvider>` ke andar wrap kiya hai.
+   - Ab in dono components ko UserContext ka global access mil jayega, aur woh apne andar user ko access kar sakte hain aur `setUser` se update bhi kar sakte hain.
+
+
+### Summary (Step-by-step):
+1. Context Creation: `React.createContext()` se context banate hain.
+2. Provider: `UserContext.Provider` ko use karke data ko globally pass karte hain.
+3. Components: Components mein `useContext` hook se context ko access karte hain.
+4. App Component: `UserContextProvider` ko wrap karke apne components ko global access dete hain.
+
+Is tarah se context API ka use karke hum apne components me easily data pass kar sakte hain bina baar-baar props ke through. Yeh method cleaner aur efficient hoti hai.
+
+Let me know if you'd like further explanation or need any clarifications! 😊

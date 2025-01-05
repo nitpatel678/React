@@ -1,0 +1,77 @@
+ 1. Tailwind CSS Install Karna
+- Step 1: Tailwind ki official site pe jao aur yeh commands follow karo:
+    bash
+  npm install -D tailwindcss postcss autoprefixer
+  npx tailwindcss init -p
+
+- Step 2: Same directory me yehi commands dubara chalao:
+    bash
+  npm install -D tailwindcss postcss autoprefixer
+  npx tailwindcss init -p
+
+- Step 3: Apne `index.css` file me yeh code paste karo:
+    css
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
+- Common Example: Tailwind ka use aise hota hai:
+    jsx
+  <h1 className='bg-red-500 text-black p-5 rounded-2xl mb-4'>
+      Tailwind Test Class
+  </h1>
+
+
+---
+
+ 2. Props ka Use
+- Props Definition:  
+  Props ek method hota hai jo value update ya text change karne ke liye use hota hai.  
+  Ye function ke andar pass kiya jata hai.
+
+- Example 1 (Props Pass karna):
+    javascript
+  function Card(props) {
+      // Props se value access
+      console.log(props.username);
+  }
+
+  App.jsx me:
+    jsx
+  <Card username="Nitin" />
+
+
+- Example 2 (Props Destructure karna):
+    javascript
+  function Card({ username }) {
+      return <h1>{username}</h1>;
+  }
+
+  Advantage: Directly variable `username` ko access kar sakte ho.
+
+---
+
+ 3. Props ke Saath Object ya Array Use Karna
+- Props me Object ya Array pass karna aur Console me Output lena:
+    javascript
+  let myobje = {
+      name: "Nitin",  // Object banaya props me pass karne ke liye
+      age: 21
+  };
+
+  function Card(props) {
+      console.log("Props Data:", props);
+  }
+
+  App.jsx me:
+    jsx
+  <Card {...myobje} />
+
+
+- Output Console me dikhai dega:
+
+  Props Data: { name: "Nitin", age: 21 }
+
+
+---
+

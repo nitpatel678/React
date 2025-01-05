@@ -1,0 +1,106 @@
+React Router ka use karke ham apne React application ka navigation aur webpage handling karte hain. Niche headings ke saath points diye gaye hain jo samajhne mein madad karenge.  
+
+ 1. React Router Overview  
+- React Router ko use karke single page applications (SPAs) mein routes manage karte hain.  
+- Yeh help karta hai alag-alag components ya pages ke bich navigate karne mein bina webpage reload kiye.  
+
+ 2. Installation  
+- React Router ko install karne ke liye terminal mein command dete hain.  
+  bash
+  npm install react-router-dom
+  
+- Yeh process Tailwind CSS installation jaisa hi hai.  
+
+ 3. Components in Project  
+- Hamne alag-alag components banaye hain jaise:  
+  - Home
+  - About
+  - Footer
+  - Header
+  - Contact Us  
+
+ 4. Header File mein Callback ka Use  
+- Header file ke Home section mein callback function ka use karte hain jo active links ke color ko change kar deta hai.  
+  Example:  
+  javascript
+  className={({ isActive }) =>
+    `block py-2 pr-4 pl-3 duration-200 ${
+      isActive ? "text-orange-700" : "text-gray-700"
+    }`
+  }
+  
+
+ 5. Link aur NavLink ka Use  
+- React Router mein Link aur NavLink components ka use karte hain:  
+  - Link: Page reload kiye bina ek route se doosre route pe navigate karne ke liye hota hai.  
+  - NavLink: Similar to Link, lekin yeh active class ya style automatically add karta hai jab current route active ho.  
+    Example:  
+    javascript
+    <NavLink to="/about" className="text-gray-700">About</NavLink>
+      
+
+ 6. Layout.jsx ka Use  
+- Layout.jsx ek reusable layout design ke liye banaya jata hai jo header aur footer ko har page pe fixed rakhta hai. Sirf beech ka content change hota hai.  
+- Code structure kuch aisa hota hai:  
+  javascript
+  function Layout() {
+    return (
+      <>
+        <Header />
+        <Outlet />
+        <Footer />
+      </>
+    );
+  }
+  
+- Layout ko main.jsx file mein define karte hain.  
+
+ 7. Main.jsx mein Import aur Router Setup  
+- Sabhi components ko main.jsx file mein import karte hain.  
+- Router setup ka code:  
+  javascript
+  import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Layout />,
+      children: [
+        {
+          path: "",
+          element: <Home />
+        },
+        {
+          path: "about",
+          element: <About />
+        },
+        {
+          path: "contact",
+          element: <Contact />
+        }
+      ]
+    }
+  ]);
+
+  <StrictMode>
+    <RouterProvider router={router} />
+  </StrictMode>
+  
+
+ Jo Abhi Bacha Hai (Remains to Explain)  
+1. NavLink aur Link ka Detailed Explanation:  
+   - Kaise active link styling kaam karti hai aur real-world use cases mein dono ka comparison.  
+
+2. Switch to Routes:  
+   - Pehle ham React Router v5 mein `Switch` use karte the, ab v6 mein yeh `Routes` se replace ho gaya hai. Isse aur explain karna zaroori ho sakta hai.  
+
+3. Nested Routing:  
+   - Parent-child routing ka implementation aur iska importance.  
+
+4. Dynamic Routing:  
+   - Kaise dynamic URLs handle karte hain (e.g., `/product/:id`).  
+
+5. Protected Routes:  
+   - Authentication-based routes kaise create karte hain, jaise login ke bina access block karna.  
+
+In points ko samajh ke aur implement karke apna React Router knowledge complete karoge! 😊  

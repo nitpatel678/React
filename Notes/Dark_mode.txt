@@ -1,0 +1,47 @@
+                               DARK MODE Toggle
+
+
+1. Is mode me hum dark mode toggle use jo ki theme ko change karta hai throughout the ui and isme ham 
+   context api ke through changes karte hai
+   but hame tailwind css bhi context api ke through likhni hoti hai
+
+2. sabse pehle hame theme.js file banayenge context folder me  aur usme hee saare context ko initiate karenge
+   waise to hum multiple file bana skte hai context k liye jaise hamne  CONTEXT WALE WALE Project me kiya tha
+
+   context banane ke liye 
+   import React, { createContext, useContext } from "react";
+ import karo context ko 
+isme create context create krne k liye hota hai aur usecontext use krne k liye
+
+3.
+
+phir ham ek createContext use karke ek function banayenge for e.g-
+
+     export const ThemeContext = createContext({
+    themeMode : "light",
+    darkTheme : () => {},
+    lightTheme : () => {}
+})
+
+
+aur ek const variable banyenge for proivder karke jo ki wrapper class ka kaam karega like 
+export const ThemeProvider = ThemeContext.Provider
+
+isme ThemeContext.provide use hua hai
+
+// explaination here 
+
+
+
+phir ham context ko usecontext ke through ek function bana ke export kar denge for example - 
+
+export default function useTheme(){
+    return useContext(ThemeContext)
+}
+
+
+
+4. aur ham phir theme btn me jaake ise aise use kr skte hai -
+     const {themeMode, lightTheme, darkTheme} = useTheme()
+
+

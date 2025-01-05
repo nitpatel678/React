@@ -1,0 +1,46 @@
+- React project setup with Vite:  
+  - `npm create vite@latest my-react-app --template react`  
+  - `cd my-react-app`  
+  - `npm install`  
+  - `npm run dev`
+
+
+
+- App.jsx main file hai jaha functions bante hai UI render karne ke liye. Example: 
+
+
+
+  import React from 'react';
+  import Chai from './fun.jsx';
+
+  function App() {
+    return <Chai />;
+  }
+
+  export default App;
+
+
+
+ Main.jsx App.jsx ko DOM me render karta hai using createRoot.
+
+
+  import { StrictMode } from 'react';
+  import { createRoot } from 'react-dom/client';
+  import App from './App.jsx';
+
+  createRoot(document.getElementById('root')).render(
+    <StrictMode>
+      <App />
+    </StrictMode>
+  );
+
+
+
+
+- Index.html Main.jsx ko script ke through load karta hai aur React ko HTML se connect karta hai.
+
+- Component ka naam hamesha CAPITAL LETTER se start hona chahiye like Function Chai().
+
+- App.jsx sirf ek single root element return kar sakta hai, lekin uske andar multiple components ho sakte hain.
+
+- Alag components alag files me bana ke App.jsx me import kar ke use kar sakte ho.
